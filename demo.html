@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo of One Function At Time</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 50px;
+    }
+
+    h1 {
+      margin-bottom: 100px;
+    }
+
+    span {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      outline: none;
+    }
+    
+    button:active {
+      top: 2px;
+      left: 2px;
+    }
+
+    button.red {
+      background: #AA0000;
+      color: white;
+    }
+
+    button.green {
+      background: green;
+      color: white;
+    }
+
+    .orange {
+      background: orange;
+    }
+
+    .blue {
+      background: blue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1><a href="https://www.npmjs.com/package/one-function-at-time">one-function-at-time</a></h1>
+
+  <!-- <h2>Without</h2> -->
+  <p><button onclick="runWithout()" class="red">Without</button></p>
+  <p><button onclick="runWith()" class="green">With</button></p>
+
+  <p id="js-container"></p>
+
+  <script>
+    exports = {};
+  </script>
+  <script src="./index.js"></script>
+  <script>
+    const container = document.getElementById('js-container');
+    function runWithout() {
+      container.innerHTML += '<span class="orange">1</span>';
+
+      setTimeout(() => {
+        container.innerHTML += '<span class="blue">2</span>';
+      }, 2000);
+    }
+
+    const queue = new exports.OneFunctionAtTime();
+    function runWith() {
+      queue.add(next => {
+        container.innerHTML += '<span class="orange">1</span>';
+
+        setTimeout(() => {
+          container.innerHTML += '<span class="blue">2</span>';
+          setTimeout(next, 500);
+        }, 1500);
+      })
+    }
+    
+  </script>
+</body>
+</html>
