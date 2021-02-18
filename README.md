@@ -17,7 +17,7 @@ npm install one-function-at-time --save
 ## Setup
 
 ```javascript
-import { OneFunctionAtTime } from 'one-function-at-time';
+const { OneFunctionAtTime } = require('one-function-at-time');
 ```
 
 ## Usage
