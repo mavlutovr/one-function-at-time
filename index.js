@@ -1,6 +1,7 @@
+const EventEmitter = require('events')
 
 
-class OneFunctionAtTime {
+class OneFunctionAtTime extends EventEmitter {
 
   constructor() {
     this.fns = [];
@@ -18,16 +19,27 @@ class OneFunctionAtTime {
   }
 
 
-  _run() {
+  _run(engoing) {
+
     if (this.processing) return;
+    
     if (this.fns && this.fns.length) {
       this.processing = true;
+      
+      // New functions group
+      if (!engoing) {
+        this.emit('start');
+      }
 
       let fn = this.fns.shift();
       fn(() => {
         this.processing = false;
-        this._run();
+        this._run(true);
       });
+    }
+
+    else if (engoing) {
+      this.emit('finish');
     }
   }
 }

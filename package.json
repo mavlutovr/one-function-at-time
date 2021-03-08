@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/mavlutovr/one-function-at-time/issues"
   },
-  "homepage": "https://github.com/mavlutovr/one-function-at-time#readme"
+  "homepage": "https://github.com/mavlutovr/one-function-at-time#readme",
+  "dependencies": {
+    "events": "^3.3.0"
+  }
 }

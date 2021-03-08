@@ -49,6 +49,17 @@ queue.add(next => {
 // end 1
 // start 2
 // end 2
+
+
+// Events
+queue.on('start', () => {
+    console.log('Start functions');
+});
+
+queue.on('finish', () => {
+    console.log('All functions are finished');
+});
+
 ```
 
 ## License
