@@ -59,37 +59,11 @@
   <h1><a href="https://www.npmjs.com/package/one-function-at-time">one-function-at-time</a></h1>
 
   <!-- <h2>Without</h2> -->
-  <p><button onclick="runWithout()" class="red">Without</button></p>
-  <p><button onclick="runWith()" class="green">With</button></p>
+  <p><button onclick="window.runWithout()" class="red">Without</button></p>
+  <p><button onclick="window.runWith()" class="green">With</button></p>
 
   <p id="js-container"></p>
 
-  <script>
-    exports = {};
-  </script>
-  <script src="./index.js"></script>
-  <script>
-    const container = document.getElementById('js-container');
-    function runWithout() {
-      container.innerHTML += '<span class="orange">1</span>';
-
-      setTimeout(() => {
-        container.innerHTML += '<span class="blue">2</span>';
-      }, 2000);
-    }
-
-    const queue = new exports.OneFunctionAtTime();
-    function runWith() {
-      queue.add(next => {
-        container.innerHTML += '<span class="orange">1</span>';
-
-        setTimeout(() => {
-          container.innerHTML += '<span class="blue">2</span>';
-          setTimeout(next, 500);
-        }, 1500);
-      })
-    }
-    
-  </script>
+  <script src="./dist/main.js"></script>
 </body>
 </html>

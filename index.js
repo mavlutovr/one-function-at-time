@@ -1,9 +1,10 @@
-const EventEmitter = require('events')
+const EventEmitter = require('events');
 
 
 class OneFunctionAtTime extends EventEmitter {
 
   constructor() {
+    super();
     this.fns = [];
     this.processing = false;
   }

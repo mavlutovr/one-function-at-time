@@ -6,7 +6,7 @@ Run functions in turn to prevent functions from running at the same time.
 
 ## Demo
 
-https://webdeveloper.pro/demo/one-function-at-time/demo.html
+https://webdeveloper.pro/demo/one-function-at-time/demo/demo.html
 
 ## Install
 
